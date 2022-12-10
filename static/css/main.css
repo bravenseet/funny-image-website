@@ -1,0 +1,171 @@
+ body {
+  height: 100%;
+  margin: 0;
+  padding:0;
+  font-family: "Ubuntu";
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: auto;
+  z-index: -100;
+} 
+
+#control-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  border-radius: 100%;
+  transition-duration: 0.2s;
+  overflow: hidden;
+
+  display: inline-flex;
+  height: 3em;
+  width: 3em;
+  cursor: pointer;
+}
+
+#github:hover,
+#mode-button:hover,
+#control-button:hover {
+  background-color: #d6d6d6;
+}
+
+#github:active,
+#mode-button:active,
+#control-button:active {
+  background-color: #c1c1c1;
+}
+
+.github-icon,
+.mode-icon,
+.control-icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  margin: auto;
+  height: 100%;
+  font-size: 1.5em;
+}
+
+#mode-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  border-radius: 100%;
+  transition-duration: 0.2s;
+  overflow: hidden;
+
+  display: inline-flex;
+  height: 3em;
+  width: 3em;
+  cursor: pointer;
+}
+
+#github {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  border-radius: 100%;
+  transition-duration: 0.2s;
+  overflow: hidden;
+
+  display: inline-flex;
+  height: 3em;
+  width: 3em;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background-color: #707070;
+  transition-duration: 0.2s;
+}
+
+#control-panel {
+  transition-duration: 0.2s;
+  background: #8c8c8c;
+  height: 80vh;
+  margin-right: 80vw;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  border-radius: 0px 5px 5px 0px;
+  text-align: center;
+  z-index: 999;
+}
+
+#cp-mainheader {
+  opacity: 1.0;
+  text-decoration: none;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.control-base {
+  color: white;
+  display: flex;
+  justify-content: start;
+}
+
+.controls {
+  border: none;
+  width: 2vw;
+  border-radius: 5px;
+  left: 0;
+  margin-right: 12px;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-size: 1.3vw;
+  cursor: pointer;
+}
+
+.controls:hover,
+#controls-space:hover {
+  background-color: #d6d6d6;
+}
+
+.controls:active,
+#controls-space:active {
+  background-color: #c1c1c1;
+}
+
+#controls-space {
+  border: none;
+  width: 5vw;
+  border-radius: 5px;
+  left: 0;
+  margin-right: 12px;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-size: 1.3vw;
+  cursor: pointer;
+}
+
+.control-span {
+  margin-top: 3px;
+  font-size: 2vw;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="icon" href="../static/logo.png" type="image/png">
+  <title>secking machine</title>
+</head>
+<body onload="restoreMode()">
+  
+  <div id="img-div">
+    <img id="image" src="../static/goofy/face1.png"></img>  
+  </div>
+
+  <button id="control-button" onclick="this.blur(); togglePanel();">
+    <span class="control-icon"><ion-icon name="build-outline"></ion-icon></span>
+  </button>
+  
+  <div id="control-panel" style="display:none">
+    <div class="control-base"><button id="controls-space" onclick="sound(vboom); this.blur;">Space</button><span class="control-span">Vineboom</span></div>
+    <div class="control-base"><button class="controls" onclick="sound(ankha); this.blur;">A</button><span class="control-span">Ankha</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(thekidisnotmyson); this.blur;">B</button><span class="control-span">Billie Jean</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(babaji); this.blur;">F</button><span class="control-span">Babaji</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(hentai); this.blur;">H</button><span class="control-span">Moan</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(augh); this.blur;">M</button><span class="control-span">Augh</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(funkytown); this.blur;">N</button><span class="control-span">Funkytown</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(rabbibillclinton); this.blur;">O</button><span class="control-span">Bill Clinton kid</span></div>
+
+    <div class="control-base"><button class="controls" onclick="sound(ph); this.blur;">P</button><span class="control-span">Pornhub</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(rats); this.blur;">R</button><span class="control-span">We are the rats</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(wetfart); this.blur;">↑</button><span class="control-span">Liquid Fard</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(ohmygawd); this.blur;">←</button><span class="control-span">Oh my gawd</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(dingalinglingling); this.blur;">→</button><span class="control-span">Dingalinglingling</span></div>
+    
+    <div class="control-base"><button class="controls" onclick="sound(suspense); this.blur;">↓</button><span class="control-span">Suspense</span></div>
+    
+    
+  </div>
+  
+  <button id="mode-button" onclick="this.blur();">
+    <span class="mode-icon"><ion-icon name="contrast-outline"></ion-icon></span>
+  </button>
+
+  <button id="github" onclick="window.location.href='https://github.com/bravenseet';">
+    <span class="github-icon"><ion-icon name="logo-github"></ion-icon></span>
+  </button>
+  
+  <script>
+    // reactions switching //
+    var reactions = []
+    
+    for (let i = 1; i < 22; i++) {
+      file = `f${i}.png`
+      reactions.push(file)
+    }
+
+    
+    const max = reactions.length - 1;
+    let s_img = 0
+
+    document.getElementById("image").src = `../static/goofy/${reactions[s_img]}`;
+    
+    var vboom = new Audio("../static/sounds/vineboom.mp3");
+    var ankha = new Audio("../static/sounds/ankha.mp3");
+    var augh = new Audio("../static/sounds/augh.mp3");
+    var babaji = new Audio("../static/sounds/babaji.mp3");
+    var dingalinglingling = new Audio("../static/sounds/dingalinglingling.mp3");
+    var funkytown = new Audio("../static/sounds/funky town.mp3");
+    var hentai = new Audio("../static/sounds/hentai.mp3");
+    var ohmygawd = new Audio("../static/sounds/ohmygawd.mp3");
+    var ph = new Audio("../static/sounds/ph intro.mp3");
+    var suspense = new Audio("../static/sounds/suspense.mp3");
+    var thekidisnotmyson = new Audio("../static/sounds/thekidisnotmyson.mp3");
+    var rats = new Audio("../static/sounds/we are the rats.mp3");
+    var wetfart = new Audio("../static/sounds/wet fart.mp3");
+    var rabbibillclinton = new Audio("../static/sounds/bill clinton my rabbi.mp3");
+    
+    function sound(snd) {
+      snd.play();
+      pm();
+    };
+
+    // mode switching (light/dark) //
+    const toggleButton = document.getElementById('mode-button');
+
+    toggleButton.addEventListener('click', function() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+  
+      // Save the current mode to local storage
+      const currentMode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('mode', currentMode);
+    });
+
+    // restoring changes //
+    function restoreMode() {
+      const body = document.body;
+      const savedMode = localStorage.getItem('mode');
+  
+      if (savedMode === 'dark') {
+          body.classList.add('dark-mode');
+      } else {
+          body.classList.remove('dark-mode');
+      }
+    } 
+
+    // image changing //
+    function pm() {
+      s_img += 1;
+      if(s_img > max) {
+        s_img = 0;
+      };
+      document.getElementById("image").src = `../static/goofy/${reactions[s_img]}`;
+    };
+
+    // control panel //
+    function togglePanel() {
+      var panel = document.getElementById('control-panel');
+      if (panel.style.display === 'none') {
+        panel.style.display = 'block';
+      } else {
+        panel.style.display = 'none';
+      }
+
+    }
+
+
+    // key commands //
+    document.addEventListener('keydown', function(event) {
+      if(event.keyCode == 32) {
+        sound(vboom);
+      } else if(event.keyCode == 65) {
+        sound(ankha);
+      } else if(event.keyCode == 80) {
+        sound(ph);
+      } else if(event.keyCode == 78) {
+        sound(funkytown);
+      } else if(event.keyCode == 77) {
+        sound(augh);
+      } else if(event.keyCode == 70) {
+        sound(babaji);
+      } else if(event.keyCode == 72) {
+        sound(hentai);
+      } else if(event.keyCode == 66) {
+        sound(thekidisnotmyson);
+      } else if(event.keyCode == 38) {
+        sound(wetfart);
+      } else if(event.keyCode == 40) {
+        sound(suspense);
+      } else if(event.keyCode == 37) {
+        sound(ohmygawd);
+      } else if(event.keyCode == 39) {
+        sound(dingalinglingling);
+      } else if(event.keyCode == 82) {
+        sound(rats);
+      } else if(event.keyCode == 79) {
+        sound(rabbibillclinton);
+      }
+    });
+    
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">  </script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

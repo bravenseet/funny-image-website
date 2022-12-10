@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "directory-tree": "^3.4.0",
+    "fs": "^0.0.1-security"
+  }
+}
